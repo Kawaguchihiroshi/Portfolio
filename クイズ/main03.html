@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>クイズ</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet" type="text/css" media="all" >
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+<style>
+.modal-content {
+  border: 0;
+  box-shadow: none;
+  background: none;
+}
+.popup {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 500;
+  opacity: 0;
+  visibility: hidden;
+  transition: .7s;
+  background-color: rgba(0,0,0,0.3);
+}
+.popup.is-show {
+  opacity: 1;
+  visibility: visible;
+}
+.popup-inner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 100%;
+  max-width: 800px;
+  padding: 50px;
+  z-index: 1000;
+}
+</style>
+</head>
+<body onload="printMoji()">
+  <header>
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+      <div class="container d-flex justify-content-between">
+        <a href="#" class="navbar-brand d-flex align-items-center">
+          <strong>クイズ</strong>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main role="main">
+  
+    <section class="mt-5 text-center">
+      <p class="display-4 mt-5">【第三問】</p>
+      <div class="container bg-white d-flex justify-content-center">
+        
+        <h1 class="w-75 mt-3">
+          <div id="mymusic"></div>
+          <div id="text" class="text-left" style="letter-spacing: 0.2em; line-height: 1.5em; height: 200px;"></div>
+        </h1>
+      </div>
+    </section>
+    <section class="container mb-5">
+    <div class="progress w-100">
+      <div id="myProgress" class="progress-bar progress-bar-striped bg-danger" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+
+    <div id="js-popup" class="popup">
+      <div class="popup-inner">
+          <img class="w-100 wow zoomIn" src="images/timeout.png" data-wow-duration="1.5s" data-wow-offset="100">
+      </div>
+    </div>
+    <script>
+    // プログレスバーの進捗値
+    var val;
+    // 一定間隔で処理を行うintervalのIDを保持
+    var intervalID;
+    val = 0;
+    // 100msおきにプログレスバーを更新する
+    intervalID = setInterval("updateProgress()", 100);
+  
+    // プログレスバーを更新する
+    function updateProgress() {
+      // プログレスバーの進捗値を更新し、プログレスバーに反映させる
+      val++;
+      var elem = document.getElementById('myProgress');
+      elem.style.width = val + '%';
+      // 最大値まで達したら終了
+      if (val == 105) {
+        var popup = document.getElementById('js-popup');
+        if(!popup) return;
+        popup.classList.add('is-show');
+        setTimeout("timeout.play()", 500);
+        setTimeout(function(){
+          window.location.href = 'main04.html';
+        }, 7*1000);
+        clearInterval(intervalID);
+      };
+    }
+    </script>
+    </section>
+    <section class="pt-5">
+      <div class="py-5 bg-light">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3 text-center mb-3">
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-lg btn-outline-secondary" data-toggle="modal" data-target="#exampleModalCenter01" onclick="myfunc01()">
+                黄色
+              </button>
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModalCenter01" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <script>
+                      var myfunc01 = function () {
+                        setTimeout("huseikai.play()", 500);
+                        setTimeout(function(){
+                          window.location.href = 'main04.html';
+                        }, 5*1000);
+                        clearInterval(intervalID);
+                      }
+                    </script>
+                    <div class="wow zoomIn" data-wow-duration="1.5s" data-wow-offset="100">
+                    <img class="w-100" src="images/huseikai.png">
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 text-center mb-3">
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-lg btn-outline-secondary" data-toggle="modal" data-target="#exampleModalCenter02" onclick="myfunc02()">
+                赤色
+              </button>
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModalCenter02" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <script>
+                      var myfunc02 = function () {
+                        setTimeout("huseikai.play()", 500);
+                        setTimeout(function(){
+                          window.location.href = 'main04.html';
+                        }, 5*1000);
+                        clearInterval(intervalID);
+                      }
+                    </script>
+                    <div class="wow zoomIn" data-wow-duration="1.5s" data-wow-offset="100">
+                    <img class="w-100" src="images/huseikai.png">
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 text-center mb-3">
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-lg btn-outline-secondary" data-toggle="modal" data-target="#exampleModalCenter03" onclick="myfunc03()">
+                青色
+              </button>
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModalCenter03" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <script>
+                      var myfunc03 = function () {
+                        setTimeout("seikai.play()", 500);
+                        setTimeout(function(){
+                          window.location.href = 'main04.html';
+                        }, 5*1000);
+                        clearInterval(intervalID);
+                      }
+                    </script>
+                    <div class="wow zoomIn" data-wow-duration="1.5s" data-wow-offset="100">
+                    <img class="w-100" src="images/seikai.png">
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 text-center mb-3">
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-lg btn-outline-secondary" data-toggle="modal" data-target="#exampleModalCenter04" onclick="myfunc04()">
+                茶色
+              </button>
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModalCenter04" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <script>
+                      var myfunc04 = function () {
+                        setTimeout("huseikai.play()", 500);
+                        setTimeout(function(){
+                          window.location.href = 'main04.html';
+                        }, 5*1000);
+                        clearInterval(intervalID);
+                      }
+                    </script>
+                    <div class="wow zoomIn" data-wow-duration="1.5s" data-wow-offset="100">
+                      <img class="w-100" src="images/huseikai.png">
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>
+  </main>
+       
+  <footer class="footer mt-5 py-3">
+    <div class="container">
+      <span class="text-muted">(c)fotter copyright</span>
+    </div>
+  </footer>
+  <script>
+    wow = new WOW(
+      {
+      boxClass: 'wow', // default
+      animateClass: 'animated', // default
+      offset:0// アニメーションをスタートさせる距離
+      }
+    );
+    wow.init();
+  </script>
+  <audio id="seikai">
+    <source src="audio/seikai.ogg" type="audio/ogg">
+    <source src="audio/seikai.m4a" type="audio/mpeg">
+    <source src="audio/seikai.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="huseikai">
+    <source src="audio/huseikai.ogg" type="audio/ogg">
+    <source src="audio/huseikai.m4a" type="audio/mpeg">
+    <source src="audio/huseikai.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="timeout">
+    <source src="audio/timeout.ogg" type="audio/ogg">
+    <source src="audio/timeout.m4a" type="audio/mpeg">
+    <source src="audio/timeout.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="music">
+    <source src="audio/p03.ogg" type="audio/ogg">
+    <source src="audio/p03.m4a" type="audio/mpeg">
+    <source src="audio/p03.mp3" type="audio/mpeg">
+  </audio>
+  <script>
+    var seikai = document.getElementById("seikai");
+    var huseikai = document.getElementById("huseikai");
+    var music = document.getElementById("music");
+    var timeout = document.getElementById("timeout");
+    timeout.load();
+    seikai.load();
+    huseikai.load();
+    music.load();
+  </script>
+
+  <script>
+    var i=0;
+    var printString;
+    var moji="猫の赤ちゃんの目の色は？";
+    function printMoji() {
+      document.getElementById("text").innerText=moji.substring(0,i++);
+      if (i <= moji.length) {
+        if (i <= 1) {
+          setTimeout('music.play()', 50);
+        }
+        setTimeout('printMoji()', 100);
+      };
+    };
+  </script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
